@@ -7,7 +7,7 @@ function Home() {
     <div>
         <Navbar></Navbar>
         <Body></Body>
-
+        <div className="p-5 bg-[#121517]"></div>
     </div>
   )
 }
