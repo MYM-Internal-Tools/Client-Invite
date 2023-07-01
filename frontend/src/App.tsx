@@ -1,23 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
-
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-      <Route path="/" element={<Home />}/>
-  )
-)
+import Client from './Components/Client/Client';
+import Brief from './Components/ClientRoutes/Brief';
+import Tasks from './Components/ClientRoutes/Tasks';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-        <RouterProvider router={router}/>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Client" element={<Client />} />
+        <Route path="/Client/Brief" element={<Brief />} />
+        <Route path="/Client/Tasks" element={<Tasks />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

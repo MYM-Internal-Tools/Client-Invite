@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "./Card";
 import CardLocked from "./CardLocked";
 import Modal from "./Modal"; // Import the Modal component
+import { useNavigate } from "react-router-dom";
 
 function Body() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State variable for modal
   const [newClientCreated, setNewClientCreated] = useState(false); // State variable for new client creation
+  const navigate = useNavigate();
 
   const handleCreateClick = () => {
     setIsModalOpen(true); // Open the modal
@@ -15,6 +17,12 @@ function Body() {
     setIsModalOpen(false); // Close the modal
     setNewClientCreated(true); // Set the flag for new client creation
   };
+
+  const handleNavigate = () =>{
+    // navigate("/Client");
+    // navigate(0);
+    console.log("clicked");
+  }
 
   return (
     <div>
@@ -41,15 +49,31 @@ function Body() {
             <Card
               Name="Tissu Tushar"
               Description="Welcome to AgenciFlow, we're so excited for vou to be here! As with most things, taking the first steps is always the hardest so we've made it..."
-              Process="60"
+              Process={60}
               Date="18th April 2023"
+              onClick={() =>  console.log("this si clicked")}
+
+            />
+            <Card
+              Name="Tissu Tushar"
+              Description="Welcome to AgenciFlow, we're so excited for vou to be here! As with most things, taking the first steps is always the hardest so we've made it..."
+              Process={60}
+              Date="18th April 2023"
+              onClick={() =>  handleNavigate() }
+            />
+            <Card
+              Name="Tissu Tushar"
+              Description="Welcome to AgenciFlow, we're so excited for vou to be here! As with most things, taking the first steps is always the hardest so we've made it..."
+              Process={60}
+              Date="18th April 2023"
+              onClick={() =>  handleNavigate }
             />
             {/* Render the new CardLocked component if new client is created */}
             {newClientCreated && (
               <CardLocked
                 Name="New Client"
                 Description="New client description"
-                Process="0"
+                Process={60}
                 Date={new Date().toLocaleDateString()}
               />
             )}
@@ -59,10 +83,11 @@ function Body() {
 
       {/* Render the modal conditionally */}
       {isModalOpen && (
-        <Modal onClose={handleModalClose}>
+       <Modal onClose={handleModalClose}>
           {/* Modal content */}
           {/* <h2>Create New Client</h2> */}
           {/* Additional content */}
+          {/* <p>Enter client details here...</p> */}
         </Modal>
       )}
     </div>

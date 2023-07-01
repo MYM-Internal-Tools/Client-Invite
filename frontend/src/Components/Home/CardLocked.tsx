@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function Card(props) {
+interface PersonProps {
+    Name: string;
+    Process: number;
+    Description: string;
+    Date: string;
+      
+}
+
+function Card(props: PersonProps) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [hide,setHide]= useState(false);
 
     const handleClose = () => {
         setIsModalOpen(!isModalOpen);
     };
 
+    const handleHide = () =>{
+        setHide(!hide);
+    }
+
     return (
+        <div className={`${hide? "hidden": " "}`}>
         <div className="relative w-[100%] sm:w-[314px] h-[314px] flex flex-col border border-zinc-700 rounded-md">
             <div className="relative w-[100%] h-[100%] sm:w-[314px] sm:h-[314px] bg-neutral-900 rounded-lg border border-zinc-700 flex flex-col">
                 <div>
@@ -47,7 +61,7 @@ function Card(props) {
                         </div>
 
                         <div className="w-full h-[7px] bg-gray-800 rounded-md mt-[60px]">
-                            <div className={`w-[${props.process}%] h-1 bg-blue-500 rounded-md`} />
+                            <div className={`w-[${props.Process}%] h-1 bg-blue-500 rounded-md`} />
                         </div>
                         <div className="flex items-center mt-10">
                             <img
@@ -85,7 +99,7 @@ function Card(props) {
             </p>
 
             <div className="flex gap-3 justify-center mt-3">
-                <div className="px-5 py-1 border border-blue-400 rounded-md text-white cursor-pointer">Yes</div>
+                <div className="px-5 py-1 border border-blue-400 rounded-md text-white cursor-pointer" onClick={handleHide}>Yes</div>
                 <div className="px-5 py-1 bg-blue-400 rounded-md text-white cursor-pointer" onClick={handleClose}>No</div>
             </div>
 
@@ -93,6 +107,7 @@ function Card(props) {
         </div>
       )}
 
+        </div>
         </div>
     );
 }

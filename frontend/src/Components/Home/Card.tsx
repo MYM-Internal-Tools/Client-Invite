@@ -1,9 +1,25 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function Card(props) {
+interface PersonProps {
+    Name: string;
+    Process: number;
+    Description: string;
+    Date: string;
+      
+}
+
+function Card(props: PersonProps) {
+
+  const navigate= useNavigate();
+
+  const handleNavigate = () =>{
+    navigate("/Client")
+  }
+
+
 //   console.log(props);
   return (
-    <div className="w-[100%] sm:w-[314px] h-[314px] flex flex-col">
+    <div className="w-[100%] sm:w-[314px] h-[314px] flex flex-col" onClick={()=> handleNavigate()}>
       <div className="w-[100%] h-[100%] sm:w-[314px] sm:h-[314px] bg-neutral-900 rounded-lg border border-zinc-700 flex flex-col">
 
         <div className="flex items-center mt-5">
