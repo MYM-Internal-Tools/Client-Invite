@@ -13,7 +13,7 @@ function Card(props: PersonProps) {
   const navigate= useNavigate();
 
   const handleNavigate = () =>{
-    navigate("/Client")
+    navigate("/Client/Brief")
   }
 
 

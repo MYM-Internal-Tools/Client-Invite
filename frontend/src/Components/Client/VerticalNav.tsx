@@ -1,27 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 
 function VerticalNav() {
 
-    const [lastClicked, setLastClicked] = useState("");
 
     const navigate = useNavigate();
 
     const handleGoback = () => {
-        navigate(-1);
+        navigate(`/`);
     }
 
-    const handleNavigate = (dest: string) => {
-        // Check if the current destination is the same as the last clicked one
-        if (dest === lastClicked) {
-            // If it is the same, reset the last clicked button
-            setLastClicked("");
-        } else {
-            // If it is different, update the last clicked button
-            setLastClicked(dest);
-        }
-        // navigate(`/Client/${dest}`);
+    const location = useLocation();
+
+    // useEffect(() => {
+    //     console.log("Current route:", location.pathname);
+    // }, [location]);
+
+    const handleNavigate = (dest: string) => {    
+            navigate(`/Client/${dest}`);
+        
     };
+
 
     return (
         <div className="border border-[#353B43] rounded-xl w-[110px]  ml-7 flex flex-col cursor-pointer max-h-[560px]">
@@ -41,7 +39,7 @@ function VerticalNav() {
             <div>
                 {/* <div className="flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer" onClick={() => handleNavigate("Brief")}> */}
                 <div
-                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${lastClicked === "Brief" ? "bg-blue-400" : ""
+                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${location.pathname === "/Client/Brief" ? "bg-blue-400" : ""
                         }`}
                     onClick={() => handleNavigate("Brief")}
                 >
@@ -58,7 +56,7 @@ function VerticalNav() {
             <div>
                 {/* <div className="flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer" onClick={() => handleNavigate("Tasks")}> */}
                 <div
-                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${lastClicked === "Tasks" ? "bg-blue-400" : ""
+                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${location.pathname === "/Client/Tasks" ? "bg-blue-400" : ""
                         }`}
                     onClick={() => handleNavigate("Tasks")}
                 >
@@ -75,7 +73,7 @@ function VerticalNav() {
             <div>
                 {/* <div className="flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer" onClick={() => handleNavigate("Doc")}> */}
                 <div
-                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${lastClicked === "Doc" ? "bg-blue-400" : ""
+                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${location.pathname === "/Client/Doc" ? "bg-blue-400" : ""
                         }`}
                     onClick={() => handleNavigate("Doc")}
                 >
@@ -93,9 +91,9 @@ function VerticalNav() {
             <div>
                 {/* <div className="flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer" onClick={() => handleNavigate("Boards")}> */}
                 <div
-                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${lastClicked === "Boards" ? "bg-blue-400" : ""
+                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${location.pathname === "/Client/Board" ? "bg-blue-400" : ""
                         }`}
-                    onClick={() => handleNavigate("Boards")}
+                    onClick={() => handleNavigate("Board")}
                 >
                     <svg width="35" height="39" viewBox="0 0 35 39" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="2" y="2" width="13.0994" height="13.0994" rx="1.87135" stroke="white" stroke-width="3" />
@@ -114,7 +112,7 @@ function VerticalNav() {
             <div>
                 {/* <div className="flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer" onClick={() => handleNavigate("Members")}> */}
                 <div
-                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${lastClicked === "Members" ? "bg-blue-400" : ""
+                    className={`flex flex-col items-center justify-center gap-2 bg-[#1E2125] rounded-xl m-2 py-2 cursor-pointer ${location.pathname=== "/Client/Members" ? "bg-blue-400" : ""
                         }`}
                     onClick={() => handleNavigate("Members")}
                 >

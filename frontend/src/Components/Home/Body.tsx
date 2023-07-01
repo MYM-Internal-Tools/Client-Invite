@@ -2,12 +2,10 @@ import { useState } from "react";
 import Card from "./Card";
 import CardLocked from "./CardLocked";
 import Modal from "./Modal"; // Import the Modal component
-import { useNavigate } from "react-router-dom";
 
 function Body() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State variable for modal
   const [newClientCreated, setNewClientCreated] = useState(false); // State variable for new client creation
-  const navigate = useNavigate();
 
   const handleCreateClick = () => {
     setIsModalOpen(true); // Open the modal
@@ -18,11 +16,11 @@ function Body() {
     setNewClientCreated(true); // Set the flag for new client creation
   };
 
-  const handleNavigate = () =>{
-    // navigate("/Client");
-    // navigate(0);
-    console.log("clicked");
-  }
+  // const handleNavigate = () =>{
+  //   // navigate("/Client");
+  //   // navigate(0);
+  //   console.log("clicked");
+  // }
 
   return (
     <div>
@@ -51,7 +49,6 @@ function Body() {
               Description="Welcome to AgenciFlow, we're so excited for vou to be here! As with most things, taking the first steps is always the hardest so we've made it..."
               Process={60}
               Date="18th April 2023"
-              onClick={() =>  console.log("this si clicked")}
 
             />
             <Card
@@ -59,14 +56,12 @@ function Body() {
               Description="Welcome to AgenciFlow, we're so excited for vou to be here! As with most things, taking the first steps is always the hardest so we've made it..."
               Process={60}
               Date="18th April 2023"
-              onClick={() =>  handleNavigate() }
             />
             <Card
               Name="Tissu Tushar"
               Description="Welcome to AgenciFlow, we're so excited for vou to be here! As with most things, taking the first steps is always the hardest so we've made it..."
               Process={60}
               Date="18th April 2023"
-              onClick={() =>  handleNavigate }
             />
             {/* Render the new CardLocked component if new client is created */}
             {newClientCreated && (
